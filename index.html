@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Laiba 💗</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Georgia,serif;
+    color:white;
+    text-align:center;
+    background:
+    radial-gradient(circle at 20% 20%,#ff8fcf,transparent 30%),
+    radial-gradient(circle at 80% 10%,#9b6cff,transparent 30%),
+    linear-gradient(135deg,#180b24,#351338,#120817);
+    overflow-x:hidden;
+}
+
+.page{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+}
+
+.card{
+    width:100%;
+    max-width:650px;
+    padding:40px 25px;
+    border-radius:30px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter:blur(15px);
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+}
+
+.small{
+    font-size:13px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    opacity:0.8;
+}
+
+h1{
+    font-size:70px;
+    margin:15px 0;
+    color:#ffd0e9;
+    text-shadow:0 0 25px #ff54ae;
+}
+
+h2{
+    font-size:32px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:17px;
+    line-height:1.8;
+}
+
+button{
+    margin-top:25px;
+    padding:15px 28px;
+    border:0;
+    border-radius:50px;
+    background:#ffffff;
+    color:#a33b7d;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.hidden{
+    display:none;
+}
+
+#birthday,
+#letter,
+#memories,
+#gift{
+    min-height:100vh;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.time{
+    width:75px;
+    padding:12px 5px;
+    border-radius:18px;
+    background:rgba(255,255,255,0.12);
+}
+
+.time b{
+    display:block;
+    font-size:25px;
+}
+
+.time span{
+    font-size:10px;
+    opacity:0.7;
+}
+
+.letter{
+    text-align:left;
+    padding:25px;
+    border-radius:22px;
+    background:rgba(255,255,255,0.08);
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+    margin-top:25px;
+}
+
+.photo{
+    height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    border-radius:22px;
+    background:linear-gradient(135deg,#63355f,#a54d83);
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.gift{
+    font-size:100px;
+    margin:20px;
+    cursor:pointer;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px);
+    }
+}
+
+.float{
+    position:fixed;
+    bottom:-50px;
+    z-index:100;
+    pointer-events:none;
+    animation:rise 5s linear forwards;
+}
+
+@keyframes rise{
+    0%{
+        transform:translateY(0);
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+.signature{
+    margin-top:25px;
+    color:#ffb9df;
+    font-style:italic;
+}
+
+@media(max-width:500px){
+
+    h1{
+        font-size:55px;
+    }
+
+    h2{
+        font-size:27px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- OPENING -->
+
+<section class="page">
+
+<div class="card">
+
+<div class="small">
+A little surprise for someone special ✨
+</div>
+
+<h1>Laiba 💗</h1>
+
+<p>
+Hey Laiba... 👀
+<br>
+I made something especially for you.
+</p>
+
+<button onclick="startSurprise()">
+Open Your Surprise 🎁
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- BIRTHDAY -->
+
+<section id="birthday" class="page hidden">
+
+<div class="card">
+
+<div class="small">
+27 September 🎂
+</div>
+
+<h2>
+Happy Birthday, Laiba! 🥳💗
+</h2>
+
+<p>
+Today is officially the day of the birthday girl. 👑
+<br>
+So yes... you are allowed to feel extra special today. 😏
+</p>
+
+
+<div class="countdown">
+
+<div class="time">
+<b id="days">00</b>
+<span>DAYS</span>
+</div>
+
+<div class="time">
+<b id="hours">00</b>
+<span>HOURS</span>
+</div>
+
+<div class="time">
+<b id="minutes">00</b>
+<span>MINUTES</span>
+</div>
+
+<div class="time">
+<b id="seconds">00</b>
+<span>SECONDS</span>
+</div>
+
+</div>
+
+
+<button onclick="showLetter()">
+Read Your Message 💌
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- LETTER -->
+
+<section id="letter" class="page hidden">
+
+<div class="card">
+
+<h2>
+A Little Message For You 💌
+</h2>
+
+<div class="letter">
+
+<p>
+
+Dear Laiba,
+
+<br><br>
+
+I honestly don't know how to write a birthday message for someone who is cute, crazy and sometimes extremely annoying. 😂
+
+<br><br>
+
+But somehow, your random talks, your little jokes and all those silly moments became memories that actually mean a lot to me. 🥹💗
+
+<br><br>
+
+You're one of those people who can make an ordinary day feel a little better just by being there.
+
+<br><br>
+
+And yes... before you become too emotional...
+
+You're also very lucky to have a best friend like me. 😌😂
+
+<br><br>
+
+Jokes aside, I genuinely hope this year brings you happiness, success, peace and everything your heart wishes for.
+
+<br><br>
+
+Keep smiling, keep being yourself and never lose that cute little personality of yours. 😏💕
+
+<br><br>
+
+Happy Birthday, Laiba! 🎂✨
+
+<br><br>
+
+And remember...
+
+Today you're officially allowed to miss me a little extra. 👀😂❤️
+
+</p>
+
+</div>
+
+
+<button onclick="showMemories()">
+Our Memories 📸
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- MEMORIES -->
+
+<section id="memories" class="page hidden">
+
+<div class="card">
+
+<h2>
+Our Little Memories 📸
+</h2>
+
+<p>
+Photos will be added here later. 💗
+</p>
+
+
+<div class="gallery">
+
+<div class="photo">
+📸<br><br>
+Your favorite photo
+</div>
+
+<div class="photo">
+🦋<br><br>
+A beautiful memory
+</div>
+
+<div class="photo">
+💕<br><br>
+Another special moment
+</div>
+
+<div class="photo">
+✨<br><br>
+One more memory
+</div>
+
+</div>
+
+
+<button onclick="showGift()">
+One Last Surprise 🎁
+</button>
+
+</div>
+
+</section>
+
+
+
+<!-- GIFT -->
+
+<section id="gift" class="page hidden">
+
+<div class="card">
+
+<h2>
+Okay... One Last Thing 👀
+</h2>
+
+<p>
+Don't click the gift. 😏
+</p>
+
+
+<div class="gift" onclick="openGift()">
+🎁
+</div>
+
+
+<div id="secret" class="hidden">
+
+<h2>
+You clicked it! 😂💗
+</h2>
+
+<p>
+
+I knew you couldn't resist. 😏
+
+<br><br>
+
+Maybe that's why you're one of my favorite people to annoy. 😂❤️
+
+<br><br>
+
+Honestly Laiba, I'm genuinely happy that you're a part of my life.
+
+<br><br>
+
+Stay happy.
+Stay crazy.
+Keep smiling.
+
+<br><br>
+
+And don't forget...
+
+<br>
+
+<strong>
+You're pretty special. 🌹
+</strong>
+
+<br><br>
+
+Happy Birthday, birthday girl! 👑🎂💗
+
+</p>
+
+
+<div class="signature">
+— Your favorite person to annoy 😌
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<script>
+
+
+function startSurprise(){
+
+    document.getElementById("birthday")
+    .classList.remove("hidden");
+
+    createHearts(25);
+
+    setTimeout(function(){
+
+        document.getElementById("birthday")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },200);
+
+}
+
+
+function showLetter(){
+
+    document.getElementById("letter")
+    .classList.remove("hidden");
+
+    createHearts(15);
+
+    setTimeout(function(){
+
+        document.getElementById("letter")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },200);
+
+}
+
+
+function showMemories(){
+
+    document.getElementById("memories")
+    .classList.remove("hidden");
+
+    createHearts(15);
+
+    setTimeout(function(){
+
+        document.getElementById("memories")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },200);
+
+}
+
+
+function showGift(){
+
+    document.getElementById("gift")
+    .classList.remove("hidden");
+
+    createHearts(20);
+
+    setTimeout(function(){
+
+        document.getElementById("gift")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+    },200);
+
+}
+
+
+function openGift(){
+
+    document.getElementById("secret")
+    .classList.remove("hidden");
+
+    createHearts(50);
+
+}
+
+
+function createHearts(number){
+
+    var items = [
+        "💗",
+        "💕",
+        "💖",
+        "💘",
+        "❤️",
+        "🦋",
+        "✨",
+        "🌸",
+        "🎀"
+    ];
+
+
+    for(var i=0;i<number;i++){
+
+        setTimeout(function(){
+
+            var item =
+            document.createElement("div");
+
+            item.className="float";
+
+            item.innerHTML =
+            items[Math.floor(
+                Math.random()*items.length
+            )];
+
+            item.style.left =
+            Math.random()*100+"vw";
+
+            item.style.fontSize =
+            (18+Math.random()*25)+"px";
+
+            item.style.animationDuration =
+            (4+Math.random()*4)+"s";
+
+            document.body.appendChild(item);
+
+
+            setTimeout(function(){
+
+                item.remove();
+
+            },8000);
+
+        },i*80);
+
+    }
+
+}
+
+
+/* COUNTDOWN */
+
+function updateCountdown(){
+
+    var now = new Date();
+
+    var year = now.getFullYear();
+
+    var target =
+    new Date(year,8,27,0,0,0);
+
+    if(now > target){
+
+        target =
+        new Date(year+1,8,27,0,0,0);
+
+    }
+
+
+    var difference =
+    target - now;
+
+
+    var days =
+    Math.floor(
+        difference / 86400000
+    );
+
+
+    var hours =
+    Math.floor(
+        (difference % 86400000)
+        / 3600000
+    );
+
+
+    var minutes =
+    Math.floor(
+        (difference % 3600000)
+        / 60000
+    );
+
+
+    var seconds =
+    Math.floor(
+        (difference % 60000)
+        / 1000
+    );
+
+
+    document.getElementById("days")
+    .innerHTML = days;
+
+
+    document.getElementById("hours")
+    .innerHTML = hours;
+
+
+    document.getElementById("minutes")
+    .innerHTML = minutes;
+
+
+    document.getElementById("seconds")
+    .innerHTML = seconds;
+
+}
+
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
+
+</script>
+
+</body>
+</html>
