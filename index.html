@@ -1,12 +1,14 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Laiba 💗</title>
+<title>Only For Ayba ❤️</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
 *{
     margin:0;
@@ -14,703 +16,865 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    min-height:100vh;
-    font-family:Georgia,serif;
+    background:#050006;
     color:white;
-    text-align:center;
-    background:
-    radial-gradient(circle at 20% 20%,#ff8fcf,transparent 30%),
-    radial-gradient(circle at 80% 10%,#9b6cff,transparent 30%),
-    linear-gradient(135deg,#180b24,#351338,#120817);
+    font-family:'Poppins',sans-serif;
     overflow-x:hidden;
 }
 
-.page{
-    min-height:100vh;
+/* ================= BACKGROUND ================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(150,0,40,.20),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(255,0,70,.12),transparent 35%);
+    pointer-events:none;
+    z-index:-2;
+}
+
+.noise{
+    position:fixed;
+    inset:0;
+    opacity:.035;
+    pointer-events:none;
+    z-index:1000;
+    background-image:url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+/* ================= LOCK SCREEN ================= */
+
+#lockScreen{
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at center,rgba(90,0,30,.25),transparent 45%),
+        #030003;
     display:flex;
     align-items:center;
     justify-content:center;
+    z-index:999;
+    padding:20px;
+    transition:1s ease;
+}
+
+.lockBox{
+    width:100%;
+    max-width:430px;
+    text-align:center;
+    padding:45px 30px;
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:30px;
+    background:rgba(255,255,255,.045);
+    backdrop-filter:blur(25px);
+    box-shadow:
+        0 0 80px rgba(255,0,60,.12),
+        inset 0 0 40px rgba(255,255,255,.02);
+}
+
+.lockIcon{
+    font-size:55px;
+    margin-bottom:20px;
+    animation:pulse 2s infinite;
+}
+
+.lockBox h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.lockBox p{
+    color:#bdaeb3;
+    font-size:13px;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+#dob{
+    width:100%;
+    padding:15px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06);
+    color:white;
+    outline:none;
+    text-align:center;
+    font-size:16px;
+}
+
+#unlockBtn{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    border:none;
+    border-radius:15px;
+    background:linear-gradient(135deg,#8b0029,#e0004d);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(224,0,77,.25);
+}
+
+#error{
+    color:#ff557a;
+    font-size:12px;
+    margin-top:12px;
+    min-height:18px;
+}
+
+/* ================= WARNING ================= */
+
+#warning{
+    position:fixed;
+    inset:0;
+    background:#050003;
+    z-index:998;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
     padding:25px;
 }
 
-.card{
-    width:100%;
-    max-width:650px;
-    padding:40px 25px;
-    border-radius:30px;
-    background:rgba(255,255,255,0.12);
-    border:1px solid rgba(255,255,255,0.25);
-    backdrop-filter:blur(15px);
-    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+.warningBox{
+    max-width:550px;
 }
 
-.small{
-    font-size:13px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    opacity:0.8;
+.warningBox .warning{
+    font-size:55px;
+    margin-bottom:15px;
 }
 
-h1{
-    font-size:70px;
-    margin:15px 0;
-    color:#ffd0e9;
-    text-shadow:0 0 25px #ff54ae;
+.warningBox h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:50px;
+    margin-bottom:15px;
 }
 
-h2{
-    font-size:32px;
-    margin-bottom:20px;
-}
-
-p{
-    font-size:17px;
+.warningBox p{
+    color:#aaa;
     line-height:1.8;
+    font-size:14px;
 }
 
-button{
-    margin-top:25px;
-    padding:15px 28px;
-    border:0;
+.openBtn{
+    margin-top:30px;
+    padding:15px 35px;
+    border:1px solid rgba(255,255,255,.2);
+    background:transparent;
+    color:white;
     border-radius:50px;
-    background:#ffffff;
-    color:#a33b7d;
-    font-size:16px;
-    font-weight:bold;
     cursor:pointer;
-    box-shadow:0 8px 25px rgba(0,0,0,0.25);
+    transition:.3s;
 }
 
-button:hover{
-    transform:scale(1.05);
+.openBtn:hover{
+    background:#b0003a;
+    border-color:#b0003a;
 }
 
-.hidden{
+/* ================= MAIN ================= */
+
+#main{
     display:none;
 }
 
-#birthday,
-#letter,
-#memories,
-#gift{
+section{
     min-height:100vh;
-}
-
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-top:25px;
-}
-
-.time{
-    width:75px;
-    padding:12px 5px;
-    border-radius:18px;
-    background:rgba(255,255,255,0.12);
-}
-
-.time b{
-    display:block;
-    font-size:25px;
-}
-
-.time span{
-    font-size:10px;
-    opacity:0.7;
-}
-
-.letter{
-    text-align:left;
-    padding:25px;
-    border-radius:22px;
-    background:rgba(255,255,255,0.08);
-}
-
-.gallery{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-    margin-top:25px;
-}
-
-.photo{
-    height:170px;
     display:flex;
     align-items:center;
     justify-content:center;
-    padding:15px;
-    border-radius:22px;
-    background:linear-gradient(135deg,#63355f,#a54d83);
-    border:1px solid rgba(255,255,255,0.2);
+    padding:80px 20px;
 }
 
-.gift{
-    font-size:100px;
-    margin:20px;
-    cursor:pointer;
-    animation:bounce 1.5s infinite;
+.hero{
+    text-align:center;
+    position:relative;
 }
 
-@keyframes bounce{
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-15px);
-    }
+.hero small{
+    color:#b88a97;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-size:10px;
 }
 
-.float{
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(65px,15vw,150px);
+    line-height:.8;
+    font-weight:500;
+    margin:30px 0;
+    background:linear-gradient(135deg,#fff,#ff8ca5,#fff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    max-width:550px;
+    margin:auto;
+    color:#bdb0b5;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.scroll{
+    margin-top:70px;
+    font-size:10px;
+    letter-spacing:4px;
+    color:#876d76;
+}
+
+/* ================= CARD ================= */
+
+.content{
+    width:100%;
+    max-width:850px;
+    text-align:center;
+}
+
+.sectionLabel{
+    color:#a97985;
+    letter-spacing:5px;
+    text-transform:uppercase;
+    font-size:10px;
+    margin-bottom:20px;
+}
+
+.content h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:55px;
+    font-weight:500;
+    margin-bottom:35px;
+}
+
+.loveCard{
+    padding:45px 30px;
+    border-radius:30px;
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(15px);
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
+}
+
+#typing{
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    line-height:1.8;
+    color:#eee;
+    min-height:260px;
+}
+
+.cursor{
+    color:#ff416c;
+    animation:blink 1s infinite;
+}
+
+/* ================= NAMES ================= */
+
+.names{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:35px;
+}
+
+.name{
+    padding:10px 18px;
+    border-radius:50px;
+    border:1px solid rgba(255,100,130,.2);
+    background:rgba(255,0,70,.06);
+    color:#e9cbd2;
+    font-size:12px;
+}
+
+/* ================= PHOTO ================= */
+
+.photoGrid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    max-width:800px;
+    width:100%;
+}
+
+.photo{
+    height:350px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    background:#120008;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:1s;
+}
+
+.photo:hover img{
+    transform:scale(1.07);
+}
+
+.photo span{
+    position:absolute;
+    bottom:18px;
+    left:18px;
+    font-size:12px;
+    letter-spacing:2px;
+    text-shadow:0 2px 10px black;
+}
+
+/* ================= FINAL ================= */
+
+.final{
+    text-align:center;
+}
+
+.finalHeart{
+    font-size:75px;
+    animation:heartbeat 1.5s infinite;
+}
+
+.final h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:70px;
+    margin:25px 0;
+}
+
+.final p{
+    color:#a99ca1;
+    line-height:2;
+    max-width:500px;
+    margin:auto;
+}
+
+.signature{
+    margin-top:45px;
+    font-family:'Cormorant Garamond',serif;
+    font-size:25px;
+    color:#ff8098;
+}
+
+/* ================= MUSIC ================= */
+
+.musicBtn{
     position:fixed;
-    bottom:-50px;
+    right:20px;
+    bottom:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.15);
+    background:rgba(20,0,8,.8);
+    color:white;
+    cursor:pointer;
     z-index:100;
-    pointer-events:none;
-    animation:rise 5s linear forwards;
+    backdrop-filter:blur(10px);
 }
 
-@keyframes rise{
-    0%{
-        transform:translateY(0);
-        opacity:0;
-    }
+/* ================= FLOATING HEARTS ================= */
 
-    10%{
-        opacity:1;
-    }
+.heart{
+    position:fixed;
+    bottom:-20px;
+    color:#ff426c;
+    pointer-events:none;
+    animation:floatUp linear forwards;
+    z-index:2;
+}
 
-    100%{
+/* ================= ANIMATIONS ================= */
+
+@keyframes pulse{
+    50%{transform:scale(1.08);}
+}
+
+@keyframes heartbeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.18);}
+}
+
+@keyframes blink{
+    50%{opacity:0;}
+}
+
+@keyframes floatUp{
+    to{
         transform:translateY(-110vh) rotate(360deg);
         opacity:0;
     }
 }
 
-.signature{
-    margin-top:25px;
-    color:#ffb9df;
-    font-style:italic;
-}
+@media(max-width:600px){
 
-@media(max-width:500px){
-
-    h1{
-        font-size:55px;
+    .lockBox{
+        padding:35px 22px;
     }
 
-    h2{
-        font-size:27px;
+    .lockBox h1{
+        font-size:35px;
     }
 
-    .gallery{
+    .warningBox h2{
+        font-size:40px;
+    }
+
+    .content h2{
+        font-size:43px;
+    }
+
+    #typing{
+        font-size:20px;
+    }
+
+    .photoGrid{
         grid-template-columns:1fr;
     }
 
-}
+    .photo{
+        height:430px;
+    }
 
+    .final h2{
+        font-size:50px;
+    }
+}
 </style>
 </head>
 
-
 <body>
 
+<div class="noise"></div>
 
-<!-- OPENING -->
+<!-- ================= DOB LOCK ================= -->
 
-<section class="page">
+<div id="lockScreen">
 
-<div class="card">
+    <div class="lockBox">
 
-<div class="small">
-A little surprise for someone special ✨
+        <div class="lockIcon">🔐</div>
+
+        <h1>Private Memory</h1>
+
+        <p>
+            This little world is not for everyone.<br>
+            Only one person knows the key. ❤️
+        </p>
+
+        <input
+            type="password"
+            id="dob"
+            placeholder="Enter the secret DOB"
+        >
+
+        <button id="unlockBtn" onclick="unlock()">
+            Unlock My Heart
+        </button>
+
+        <div id="error"></div>
+
+    </div>
+
 </div>
 
-<h1>Laiba 💗</h1>
 
-<p>
-Hey Laiba... 👀
-<br>
-I made something especially for you.
-</p>
+<!-- ================= WARNING ================= -->
 
-<button onclick="startSurprise()">
-Open Your Surprise 🎁
+<div id="warning">
+
+    <div class="warningBox">
+
+        <div class="warning">⚠️</div>
+
+        <h2>DON'T OPEN THIS.</h2>
+
+        <p>
+            Seriously... you were warned.<br>
+            This page contains memories, feelings,
+            and one very special person.
+        </p>
+
+        <button class="openBtn" onclick="openLove()">
+            I Accept The Risk ❤️
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MAIN WEBSITE ================= -->
+
+<div id="main">
+
+    <section class="hero">
+
+        <div>
+
+            <small>A little secret made for</small>
+
+            <h1>Ayba</h1>
+
+            <p>
+                Some people enter your life randomly.
+                Some become memories.
+                And then there is that one person
+                who slowly becomes your whole world.
+            </p>
+
+            <div class="scroll">
+                ↓ SCROLL TO ENTER MY WORLD ↓
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOVE LETTER -->
+
+    <section>
+
+        <div class="content">
+
+            <div class="sectionLabel">
+                Chapter One
+            </div>
+
+            <h2>From Me, To You</h2>
+
+            <div class="loveCard">
+
+                <div id="typing"></div>
+
+                <div class="names">
+
+                    <div class="name">Killchor ❤️ Ayba</div>
+                    <div class="name">Moti 🥺</div>
+                    <div class="name">Minikuchupuchu</div>
+                    <div class="name">Aybapookie 💗</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+
+    <section>
+
+        <div class="content">
+
+            <div class="sectionLabel">
+                Chapter Two
+            </div>
+
+            <h2>Our Little Memories</h2>
+
+            <div class="photoGrid">
+
+                <div class="photo">
+                    <img src="photo1.jpg" alt="Memory 1">
+                    <span>ONE MOMENT ❤️</span>
+                </div>
+
+                <div class="photo">
+                    <img src="photo2.jpg" alt="Memory 2">
+                    <span>ONE SMILE 🫶🏻</span>
+                </div>
+
+                <div class="photo">
+                    <img src="photo3.jpg" alt="Memory 3">
+                    <span>ONE FEELING ♾️</span>
+                </div>
+
+                <div class="photo">
+                    <img src="photo4.jpg" alt="Memory 4">
+                    <span>ONE STORY ❤️‍🩹</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FINAL -->
+
+    <section>
+
+        <div class="final">
+
+            <div class="finalHeart">❤️</div>
+
+            <h2>My Forever?</h2>
+
+            <p>
+                You're not just my girlfriend.
+                You're the person I want to laugh with,
+                fight with, grow with,
+                and choose again and again.
+            </p>
+
+            <div class="signature">
+                My girlfriend.<br>
+                My best friend.<br>
+                My future life partner. ♾️
+            </div>
+
+            <div class="signature">
+                Always yours,<br>
+                Aybapookie ❤️
+            </div>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- ================= MUSIC ================= -->
+
+<audio id="music" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<button class="musicBtn" onclick="toggleMusic()" id="musicBtn">
+    🎵
 </button>
-
-</div>
-
-</section>
-
-
-
-<!-- BIRTHDAY -->
-
-<section id="birthday" class="page hidden">
-
-<div class="card">
-
-<div class="small">
-27 September 🎂
-</div>
-
-<h2>
-Happy Birthday, Laiba! 🥳💗
-</h2>
-
-<p>
-Today is officially the day of the birthday girl. 👑
-<br>
-So yes... you are allowed to feel extra special today. 😏
-</p>
-
-
-<div class="countdown">
-
-<div class="time">
-<b id="days">00</b>
-<span>DAYS</span>
-</div>
-
-<div class="time">
-<b id="hours">00</b>
-<span>HOURS</span>
-</div>
-
-<div class="time">
-<b id="minutes">00</b>
-<span>MINUTES</span>
-</div>
-
-<div class="time">
-<b id="seconds">00</b>
-<span>SECONDS</span>
-</div>
-
-</div>
-
-
-<button onclick="showLetter()">
-Read Your Message 💌
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- LETTER -->
-
-<section id="letter" class="page hidden">
-
-<div class="card">
-
-<h2>
-A Little Message For You 💌
-</h2>
-
-<div class="letter">
-
-<p>
-
-Dear Laiba,
-
-<br><br>
-
-I honestly don't know how to write a birthday message for someone who is cute, crazy and sometimes extremely annoying. 😂
-
-<br><br>
-
-But somehow, your random talks, your little jokes and all those silly moments became memories that actually mean a lot to me. 🥹💗
-
-<br><br>
-
-You're one of those people who can make an ordinary day feel a little better just by being there.
-
-<br><br>
-
-And yes... before you become too emotional...
-
-You're also very lucky to have a best friend like me. 😌😂
-
-<br><br>
-
-Jokes aside, I genuinely hope this year brings you happiness, success, peace and everything your heart wishes for.
-
-<br><br>
-
-Keep smiling, keep being yourself and never lose that cute little personality of yours. 😏💕
-
-<br><br>
-
-Happy Birthday, Laiba! 🎂✨
-
-<br><br>
-
-And remember...
-
-Today you're officially allowed to miss me a little extra. 👀😂❤️
-
-</p>
-
-</div>
-
-
-<button onclick="showMemories()">
-Our Memories 📸
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- MEMORIES -->
-
-<section id="memories" class="page hidden">
-
-<div class="card">
-
-<h2>
-Our Little Memories 📸
-</h2>
-
-<p>
-Photos will be added here later. 💗
-</p>
-
-
-<div class="gallery">
-
-<div class="photo">
-📸<br><br>
-Your favorite photo
-</div>
-
-<div class="photo">
-🦋<br><br>
-A beautiful memory
-</div>
-
-<div class="photo">
-💕<br><br>
-Another special moment
-</div>
-
-<div class="photo">
-✨<br><br>
-One more memory
-</div>
-
-</div>
-
-
-<button onclick="showGift()">
-One Last Surprise 🎁
-</button>
-
-</div>
-
-</section>
-
-
-
-<!-- GIFT -->
-
-<section id="gift" class="page hidden">
-
-<div class="card">
-
-<h2>
-Okay... One Last Thing 👀
-</h2>
-
-<p>
-Don't click the gift. 😏
-</p>
-
-
-<div class="gift" onclick="openGift()">
-🎁
-</div>
-
-
-<div id="secret" class="hidden">
-
-<h2>
-You clicked it! 😂💗
-</h2>
-
-<p>
-
-I knew you couldn't resist. 😏
-
-<br><br>
-
-Maybe that's why you're one of my favorite people to annoy. 😂❤️
-
-<br><br>
-
-Honestly Laiba, I'm genuinely happy that you're a part of my life.
-
-<br><br>
-
-Stay happy.
-Stay crazy.
-Keep smiling.
-
-<br><br>
-
-And don't forget...
-
-<br>
-
-<strong>
-You're pretty special. 🌹
-</strong>
-
-<br><br>
-
-Happy Birthday, birthday girl! 👑🎂💗
-
-</p>
-
-
-<div class="signature">
-— Your favorite person to annoy 😌
-</div>
-
-</div>
-
-</div>
-
-</section>
-
 
 
 <script>
 
+/* ================= DOB ================= */
 
-function startSurprise(){
+/*
+   IMPORTANT:
+   Change the value below to the DOB you want.
+   Example:
+   const SECRET_DOB = "12052007";
+*/
 
-    document.getElementById("birthday")
-    .classList.remove("hidden");
-
-    createHearts(25);
-
-    setTimeout(function(){
-
-        document.getElementById("birthday")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-    },200);
-
-}
+const SECRET_DOB = "12052007";
 
 
-function showLetter(){
+function unlock(){
 
-    document.getElementById("letter")
-    .classList.remove("hidden");
+    const input =
+        document.getElementById("dob").value.trim();
 
-    createHearts(15);
+    const error =
+        document.getElementById("error");
 
-    setTimeout(function(){
+    if(input === SECRET_DOB){
 
-        document.getElementById("letter")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+        document.getElementById("lockScreen").style.opacity = "0";
 
-    },200);
+        setTimeout(() => {
 
-}
+            document.getElementById("lockScreen").style.display = "none";
 
+            document.getElementById("warning").style.display = "flex";
 
-function showMemories(){
+        },1000);
 
-    document.getElementById("memories")
-    .classList.remove("hidden");
+    }else{
 
-    createHearts(15);
+        error.innerHTML =
+            "Wrong key... this heart is private. ❤️";
 
-    setTimeout(function(){
+        document.getElementById("dob").value = "";
 
-        document.getElementById("memories")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
-
-    },200);
+    }
 
 }
 
 
-function showGift(){
+/* ================= OPEN ================= */
 
-    document.getElementById("gift")
-    .classList.remove("hidden");
+function openLove(){
 
-    createHearts(20);
+    const warning =
+        document.getElementById("warning");
 
-    setTimeout(function(){
+    warning.style.opacity = "0";
 
-        document.getElementById("gift")
-        .scrollIntoView({
-            behavior:"smooth"
-        });
+    setTimeout(() => {
 
-    },200);
+        warning.style.display = "none";
 
-}
+        document.getElementById("main").style.display = "block";
 
+        startTyping();
+        createHearts();
 
-function openGift(){
-
-    document.getElementById("secret")
-    .classList.remove("hidden");
-
-    createHearts(50);
+    },1000);
 
 }
 
 
-function createHearts(number){
+/* ================= TYPEWRITER ================= */
 
-    var items = [
-        "💗",
-        "💕",
-        "💖",
-        "💘",
-        "❤️",
-        "🦋",
-        "✨",
-        "🌸",
-        "🎀"
-    ];
+const message = `
+Ayba...
+
+I don't know exactly when you became
+so important to me.
+
+But somewhere between the laughs,
+the fights, the random talks,
+and all those little moments...
+
+you became my favorite person.
+
+You're not just my girlfriend.
+
+You're my comfort.
+My happiness.
+My safe place.
+My favorite notification.
+
+Killchor loves his Ayba. ❤️
+
+Moti loves his Minikuchupuchu. 🥺
+
+And your Aybapookie...
+just wants to keep choosing you.
+
+Today.
+Tomorrow.
+And every day after that.
+
+I don't want just memories with you.
+
+I want a whole life of them.
+
+My girlfriend.
+My best friend.
+My future life partner.
+
+Always. ♾️❤️
+`;
+
+let index = 0;
+
+function startTyping(){
+
+    const target =
+        document.getElementById("typing");
+
+    function type(){
+
+        if(index < message.length){
+
+            target.innerHTML =
+                message.substring(0,index+1)
+                .replace(/\n/g,"<br>")
+                +
+                '<span class="cursor">|</span>';
+
+            index++;
+
+            setTimeout(type,35);
+
+        }
+
+    }
+
+    type();
+
+}
 
 
-    for(var i=0;i<number;i++){
+/* ================= MUSIC ================= */
 
-        setTimeout(function(){
+const music =
+    document.getElementById("music");
 
-            var item =
+const musicBtn =
+    document.getElementById("musicBtn");
+
+let playing = false;
+
+function toggleMusic(){
+
+    if(playing){
+
+        music.pause();
+
+        musicBtn.innerHTML = "🎵";
+
+        playing = false;
+
+    }else{
+
+        music.play().catch(()=>{});
+
+        musicBtn.innerHTML = "⏸️";
+
+        playing = true;
+
+    }
+
+}
+
+
+/* ================= FLOATING HEARTS ================= */
+
+function createHearts(){
+
+    setInterval(() => {
+
+        const heart =
             document.createElement("div");
 
-            item.className="float";
+        heart.className = "heart";
 
-            item.innerHTML =
-            items[Math.floor(
-                Math.random()*items.length
-            )];
+        heart.innerHTML =
+            Math.random() > .5 ? "❤️" : "♡";
 
-            item.style.left =
-            Math.random()*100+"vw";
+        heart.style.left =
+            Math.random()*100 + "vw";
 
-            item.style.fontSize =
-            (18+Math.random()*25)+"px";
+        heart.style.fontSize =
+            (10 + Math.random()*20) + "px";
 
-            item.style.animationDuration =
-            (4+Math.random()*4)+"s";
+        heart.style.animationDuration =
+            (5 + Math.random()*5) + "s";
 
-            document.body.appendChild(item);
+        document.body.appendChild(heart);
 
+        setTimeout(() => {
 
-            setTimeout(function(){
+            heart.remove();
 
-                item.remove();
+        },10000);
 
-            },8000);
-
-        },i*80);
-
-    }
+    },700);
 
 }
-
-
-/* COUNTDOWN */
-
-function updateCountdown(){
-
-    var now = new Date();
-
-    var year = now.getFullYear();
-
-    var target =
-    new Date(year,8,27,0,0,0);
-
-    if(now > target){
-
-        target =
-        new Date(year+1,8,27,0,0,0);
-
-    }
-
-
-    var difference =
-    target - now;
-
-
-    var days =
-    Math.floor(
-        difference / 86400000
-    );
-
-
-    var hours =
-    Math.floor(
-        (difference % 86400000)
-        / 3600000
-    );
-
-
-    var minutes =
-    Math.floor(
-        (difference % 3600000)
-        / 60000
-    );
-
-
-    var seconds =
-    Math.floor(
-        (difference % 60000)
-        / 1000
-    );
-
-
-    document.getElementById("days")
-    .innerHTML = days;
-
-
-    document.getElementById("hours")
-    .innerHTML = hours;
-
-
-    document.getElementById("minutes")
-    .innerHTML = minutes;
-
-
-    document.getElementById("seconds")
-    .innerHTML = seconds;
-
-}
-
-
-updateCountdown();
-
-setInterval(
-    updateCountdown,
-    1000
-);
-
 
 </script>
 
 </body>
 </html>
+```
